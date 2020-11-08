@@ -44,6 +44,13 @@
             <version>${aws-lambda-core.version}</version>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-lambda-java-events</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+
         <dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -55,7 +62,16 @@
 			<artifactId>spring-data-dynamodb</artifactId>
 			<version>5.1.0</version>
 		</dependency>
-		<dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-core -->
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-core</artifactId>
+            <version>1.11.895</version>
+        </dependency>
+
+
+        <dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-java-sdk-dynamodb</artifactId>
 			<version>1.11.893</version>
@@ -126,28 +142,6 @@
                     <shadedArtifactAttached>true</shadedArtifactAttached>
                     <shadedClassifierName>aws</shadedClassifierName>
                 </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.3.0</version>
-                <configuration>
-                    <attach>true</attach>
-                    <descriptors>
-                        <descriptor>${project.basedir}/src/assembly/stub.xml</descriptor>
-                    </descriptors>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>stub</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                        <inherited>false</inherited>
-                    </execution>
-                </executions>
             </plugin>
 
             <plugin>
