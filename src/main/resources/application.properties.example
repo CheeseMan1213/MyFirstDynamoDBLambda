@@ -1,4 +1,4 @@
-amazon.dynamodb.endpoint=http://localhost:8000/
-amazon.aws.accesskey=key
-amazon.aws.secretkey=key2
-amazon.dynamodb.region=us-east-1
+amazon_dynamodb_endpoint=http://localhost:8000/
+amazon_aws_accesskey=key
+amazon_aws_secretkey=key2
+amazon_dynamodb_region=us-east-1
