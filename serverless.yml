@@ -3,7 +3,7 @@ provider:
   name: aws
   runtime: java8
   profile: default
-  timeout: 10
+  timeout: 180
 package:
   artifact: target/aws-java-spring-cloud-function-demo-0.0.1-SNAPSHOT-aws.jar
 functions:
