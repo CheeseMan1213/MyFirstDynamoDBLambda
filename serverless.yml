@@ -1,6 +1,11 @@
 service: sls-aws-java-spring-cloud-function-demo
 provider:
   name: aws
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Scan
+      Resource: arn:aws:dynamodb:us-east-1:475640621870:table/student
   runtime: java8
   profile: default
   timeout: 180
