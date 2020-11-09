@@ -23,7 +23,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Bean;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.function.Function;
 
 @SpringBootApplication
@@ -44,15 +46,20 @@ public class MemberFunctionApplication {
 //	}
 	///New stuff here
 	@Bean
-	public Function<StudentRequest, ItemCollection<ScanOutcome>> members() {
+	public Function<StudentRequest, List<String>> members() {
 		return student -> {
 			SavePersonHandler savePersonHandler = new SavePersonHandler();
 			ItemCollection<ScanOutcome> test = savePersonHandler.handleRequest(student);
 			Iterator<Item> iterator = test.iterator();
+			List<String> temp = new ArrayList<String>();
 			while (iterator.hasNext()) {
-				System.out.println(iterator.next().toJSONPretty());
+				temp.add(iterator.next().toJSON());
 			}
-		    return savePersonHandler.handleRequest(student);
+//			while (iterator.hasNext()) {
+//				System.out.println(iterator.next().toJSONPretty());
+//			}
+		    //return savePersonHandler.handleRequest(student);
+			return temp;
         };
 	}
 }
@@ -100,11 +107,12 @@ class SavePersonHandler {
 //	}
 
 	private void initDynamoDbClient() {
-		AmazonDynamoDBClient client = new AmazonDynamoDBClient(amazonAWSCredentials());
+		//AmazonDynamoDBClient client = new AmazonDynamoDBClient(amazonAWSCredentials());
+		AmazonDynamoDBClient client = new AmazonDynamoDBClient();
 		client.setRegion(Region.getRegion(REGION));
 		this.dynamoDb = new DynamoDB(client);
 	}
-	private AWSCredentials amazonAWSCredentials() {
-		return new BasicAWSCredentials(this.awsAccessKey, this.awsSecretKey);
-	}
+//	private AWSCredentials amazonAWSCredentials() {
+//		return new BasicAWSCredentials(this.awsAccessKey, this.awsSecretKey);
+//	}
 }
