@@ -1,3 +1,5 @@
+# This README may no longer be valid, but I have left it for myself for reference
+
 # Example Demonstrating Spring Cloud Function Framework + AWS Lambda + Serverless Framework
 This example uses Serverless Framework to deploy a Spring Cloud Function on AWS Lambda Platform.
 # Quick introduction to Spring Cloud Function
