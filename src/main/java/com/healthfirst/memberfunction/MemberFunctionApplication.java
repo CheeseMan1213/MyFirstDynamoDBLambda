@@ -20,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Bean;
 
 import java.util.Iterator;
@@ -56,10 +57,11 @@ public class MemberFunctionApplication {
 	}
 }
 //public class SavePersonHandler implements RequestHandler<StudentRequest, StudentResponse> {
+@Configuration
 class SavePersonHandler {
 
-	@Autowired
-	StudentRepository repository;
+//	@Autowired
+//	StudentRepository repository;
 
 	private DynamoDB dynamoDb;
 	private String DYNAMODB_TABLE_NAME = "student";
